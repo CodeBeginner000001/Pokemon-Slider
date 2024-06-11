@@ -1,0 +1,819 @@
+body {
+    font-family: Poppins;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+}
+
+* {
+    overscroll-behavior: none;
+    margin: 0;
+}
+
+/* Nav bar on the site */
+header {
+    display: flex;
+    /* justify-content: center; */
+    position: relative;
+    z-index: 100;
+}
+
+nav {
+    width: fit-content;
+}
+
+header div img {
+    height: 100px;
+}
+
+
+/* Main-content */
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -113px;
+    position: relative;
+}
+
+.container .list .item {
+    position: absolute;
+    inset: 0;
+}
+
+.container .list .item img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.container .list .item .content {
+    position: absolute;
+    top: 35%;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-90%);
+    padding-right: 1%;
+    box-sizing: border-box;
+    color: white;
+    text-shadow: 0 8px 10px #000400;
+}
+
+.container .list .item .content .topic {
+    font-weight: 800;
+    letter-spacing: 8px;
+    font-size: 1em;
+}
+
+.container .list .item .content .title {
+    padding-right: 2.9em;
+    margin-top: -0.2em;
+    font-weight: bold;
+    font-size: 7em;
+    margin-left: -0.05em;
+}
+
+.container .list .item .content .type {
+    margin-top: -1.5em;
+    font-size: 1.1em;
+}
+
+.container .list .item .content .des {
+    background-color: #1114;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 8px;
+    margin-top: 2%;
+    font-size: 14px;
+    /* display: none; */
+}
+
+/* For buttons in the item */
+.container .list .item .content button {
+    margin-top: 20px;
+    height: 40px;
+    width: 130px;
+    font-family: Poppins;
+    border: none;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    background-color: #1116;
+    color: white;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transition: 0.5s;
+}
+
+.container .list .item .content button:hover {
+    background: white;
+    border: none;
+    border: 1px solid black;
+    color: black;
+}
+
+/* .container .list .item img{
+    object-fit: cover;
+} */
+
+
+/* Thumbnail */
+.thumbnail {
+    position: absolute;
+    bottom: 20px;
+    left: 65%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.thumbnail .item {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.thumbnail .item img {
+    height: 100%;
+    width: 100%;
+    object-fit: fit;
+    border-radius: 20px;
+}
+
+.thumbnail .item .content-1 {
+    width: max-content;
+    position: absolute;
+    font-size: 15px;
+    bottom: 8px;
+    left: 10px;
+    right: 20px;
+}
+
+.thumbnail .item .content-1 .title {
+    font-weight: 500;
+    text-shadow: 0 8px 10px black;
+}
+
+/* For arrows to move the cards */
+.arrows {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    max-width: 30%;
+    top: 85%;
+    right: 52%;
+    gap: 20px;
+}
+
+.arrows button {
+    height: 40px;
+    width: 40px;
+    background-color: #1119;
+    border: none;
+    font-family: monospace;
+    color: #fff;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 50%;
+    transition: 0.5s;
+    z-index: 100;
+}
+
+.arrows button:hover {
+    background-color: #eee;
+    color: #555;
+}
+
+/* display in order */
+.container .list .item:nth-child(1) {
+    z-index: 1;
+}
+
+.container .list .item:nth-child(1) .type,
+.container .list .item:nth-child(1) .title,
+.container .list .item:nth-child(1) .topic,
+.container .list .item:nth-child(1) .des,
+.container .list .item:nth-child(1) button {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+/* Animation delay to item-1 elements */
+.container .list .item:nth-child(1) .title {
+    animation-delay: 1.2s;
+}
+
+.container .list .item:nth-child(1) .type {
+    animation-delay: 1.4s;
+}
+
+.container .list .item:nth-child(1) .des {
+    animation-delay: 1.8s;
+}
+
+.container .list .item:nth-child(1) button {
+    animation-delay: 1.6s;
+}
+
+/* effect on next click */
+.container.next .list .item:nth-child(1) img {
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    bottom: 20px;
+    left: 65%;
+    border-radius: 20px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+
+@keyframes showImage {
+    to {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+/* moving forward effect in thumbnail */
+.container.next .thumbnail .item:nth-last-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: showthumbail .5s linear 1 forwards;
+}
+
+@keyframes showthumbail {
+    to {
+        width: 180px;
+    }
+}
+
+.container.next .thumbnail {
+    transform: translateX(150px);
+    animation: transformThumbnail .5s linear 1 forwards
+}
+
+@keyframes transformThumbnail {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* effect on prev button click */
+.container.prev .list .item:nth-child(2) {
+    z-index: 2;
+}
+
+.container.prev .list .item:nth-child(2) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: Outimage 1s linear 1 forwards;
+}
+
+@keyframes Outimage {
+    to {
+        width: 180px;
+        height: 180px;
+        object-fit: fill;
+        bottom: 20px;
+        left: 65%;
+        border-radius: 20px;
+    }
+}
+
+.container.prev .thumbnail .item:nth-child(1) {
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: showthumbail 0.5s linear 1 forwards;
+}
+
+/* removing content of prev item */
+.container.prev .list .item:nth-child(2) .type,
+.container.prev .list .item:nth-child(2) .title,
+.container.prev .list .item:nth-child(2) .topic,
+.container.prev .list .item:nth-child(2) .des,
+.container.prev .list .item:nth-child(2) button {
+    animation: contentout 0.6s linear 1 forwards;
+}
+
+@keyframes contentout {
+    to {
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+/* when slide process is going on,user will not be allowed to change */
+.container.prev .arrows button,
+.container.next .arrows button {
+    pointer-events: none;
+}
+
+/* adding a time running out indicator */
+.time {
+    width: 0%;
+    height: 5px;
+    z-index: 100;
+    background-color: #f1683a;
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+
+.container.next .time,
+.container.prev .time {
+    width: 100%;
+    animation: timerunning 2s linear 0.5s forwards;
+}
+
+@keyframes timerunning {
+    to {
+        width: 0;
+    }
+}
+
+
+
+/* Media Query */
+@media screen and (max-width:2800px) {
+    .container .list .item .content .title {
+        margin-top: 20px;
+        font-size: 50px;
+    }
+
+    .container .list .item .content .type {
+        font-size: 20px;
+        margin-top: 2px;
+    }
+
+    .container .list .item .content .des {
+        font-size: 1.9em;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 30%;
+    }
+
+    .thumbnail {
+        left: 30%;
+    }
+
+    .arrows {
+        right: 65%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 30%;
+            border-radius: 20px;
+        }
+    }
+
+}
+
+@media  screen and (max-width:2121px) {
+    .container .list .item .content .des {
+        font-size: 1.7em;
+    } 
+    
+}
+
+@media screen and (max-width:1530px) {
+    .thumbnail {
+        left: 30%;
+    }
+
+    .arrows {
+        right: 60%;
+    }
+
+    /* When prev button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 30%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width:1440px) {
+    .container .list .item .content {
+        padding-right: 0;
+        top: 25%;
+    }
+
+    .container .list .item .content .des {
+        margin-top: 20px;
+        font-size: 1.5em;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 70%;
+    }
+
+    .thumbnail {
+        left: 70%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 70%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width:1220px) {
+    .container .list .item .content {
+        padding-right: 0;
+        top: 25%;
+    }
+
+    .container .list .item .content .des {
+        margin-top: 20px;
+        font-size: 1.3em;
+    }
+
+    .thumbnail {
+        left: 39%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 39%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width:1015px) {
+    .container .list .item .content {
+        padding-left: 28%;
+    }
+    .container .list .item .content .des {
+        margin-top: 20px;
+        font-size: 1.3em;
+    }
+
+    .thumbnail {
+        left: 39%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 39%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .container .list .item .content {
+        margin-left: -40px;
+        top: 20%;
+    }
+
+    .container .list .item .content .type {
+        margin-top: 2px;
+        font-size: 10px;
+    }
+
+    .container .list .item .content .title {
+        margin-top: 20px;
+        font-size: 40px;
+    }
+
+    .container .list .item .content  .des {
+        width: 300px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 40%;
+    }
+
+    .thumbnail {
+        left: 40%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 40%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 870px) {
+
+    .container.next .list .item:nth-child(1) img {
+        left: 60%;
+    }
+
+    .thumbnail {
+        left: 60%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 60%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container .list .item .content {
+        margin-left: 0;
+        top: 20%;
+    }
+}   
+
+
+@media screen and (max-width: 680px) {
+    .container .list .item .content {
+        margin-left: 0;
+        padding-right: 0;
+        top: 20%;
+    }
+
+    .container .list .item .content .title {
+        margin-top: 20px;
+        font-size: 30px;
+    }
+
+    .container .list .item .content .type {
+        margin-top: 1px;
+    }
+
+    .container .list .item .content .des {
+        margin-top: 20px;
+    }
+
+}
+
+
+/* content padding not required from below */
+@media screen and (max-width: 550px) {
+    header div img {
+        height: 80px;
+    }
+
+    .container .list .item .content {
+        padding-left: 1%;
+        right: 1%;
+    }
+
+    .container .list .item .content .title {
+        margin-top: 20px;
+
+    }
+
+    .container .list .item .content .des {
+        width: 300px;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .container .list .item .content button {
+        width: fit-content;
+        padding: 0 15px;
+        font-size: 12px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 55%;
+    }
+
+    .thumbnail {
+        left: 55%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 55%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header div img {
+        height: 50px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 50%;
+    }
+
+    .thumbnail {
+        left: 50%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 50%;
+            border-radius: 20px;
+        }
+    }
+
+    .arrows {
+        right: 60%;
+    }
+
+    .container .list .item .content .des {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 366px) {
+    .arrows {
+        right: 62%;
+    }
+
+    .container .list .item .content .des {
+        width: 250px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 45%;
+    }
+
+    .thumbnail {
+        left: 45%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 45%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 335px) {
+    .container.next .list .item:nth-child(1) img {
+        left: 42%;
+    }
+
+    .thumbnail {
+        left: 42%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 42%;
+            border-radius: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 311px) {
+
+    .container .list .item .content .des {
+        margin-top: 20px;
+        font-size: 10px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 54%;
+    }
+
+    .thumbnail {
+        left: 54%;
+    }
+
+
+
+
+    .thumbnail .item {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 130px;
+            height: 130px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 54%;
+            border-radius: 20px;
+        }
+    }
+
+    .arrows {
+        right: 55%;
+    }
+
+    .arrows button {
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media screen and (max-width: 285px) {
+
+    .container .list .item .content .des {
+        width: 150px;
+        margin-top: 20px;
+        font-size: 10px;
+    }
+
+    .container.next .list .item:nth-child(1) img {
+        left: 48%;
+    }
+
+    .thumbnail {
+        left: 48%;
+    }
+
+    .arrows {
+        right: 60%;
+    }
+
+    /* when pre button is clicked */
+    @keyframes Outimage {
+        to {
+            width: 180px;
+            height: 180px;
+            object-fit: fill;
+            bottom: 20px;
+            left: 48%;
+            border-radius: 20px;
+        }
+    }
+}
