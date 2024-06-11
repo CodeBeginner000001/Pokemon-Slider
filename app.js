@@ -3,6 +3,24 @@ let prevdom=document.querySelector("#prev");
 let container=document.querySelector(".container");
 let containerList=document.querySelector(".container .list");
 let thumbnail=document.querySelector(".container .thumbnail");
+// Buttons functionality
+let button=document.querySelectorAll(".container .list .item .content button");
+let seemore=document.querySelectorAll(".container .list .item .content .des");
+// console.log(seemore);
+let flag=false;
+
+for(let i=0;i<button.length;i++)
+{
+    button[i].addEventListener("click",()=>{
+        if(!flag){
+            seemore[i].style.visibility="visible";
+            flag=true;
+        }else{
+            seemore[i].style.visibility="hidden";
+            flag=false;
+        }
+    });
+}
 
 let timeauto=7000;
 let autoout=setTimeout(()=>{

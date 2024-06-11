@@ -79,6 +79,7 @@ header div img {
 }
 
 .container .list .item .content .des {
+    visibility: hidden;
     background-color: #1114;
     border: 1px solid white;
     border-radius: 10px;
