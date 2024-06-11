@@ -4,10 +4,10 @@ let container=document.querySelector(".container");
 let containerList=document.querySelector(".container .list");
 let thumbnail=document.querySelector(".container .thumbnail");
 
-// let timeauto=5000;
-// let autoout=setTimeout(()=>{
-//     nextdom.click();
-// },timeauto);
+let timeauto=7000;
+let autoout=setTimeout(()=>{
+    nextdom.click();
+},timeauto);
 
 let time=3000;
 let timeout;
@@ -38,8 +38,8 @@ function show(t){
         container.classList.remove('prev');
     },time)
 
-    // clearTimeout(autoout);
-    // autoout=setTimeout(()=>{
-    //     nextdom.click();
-    // },timeauto);
+    clearTimeout(autoout);
+    autoout=setTimeout(()=>{
+        nextdom.click();
+    },timeauto);
 }
